@@ -1,0 +1,57 @@
+{
+  "name": "exement-plus",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "workspaces": [
+    "packages/*",
+    "play",
+    "docs"
+  ],
+  "scripts": {
+    "cz": "git-cz",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "prepare": "simple-git-hooks",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:commit": "npx commitlint --config commitlint.config.js --edit \"${1}\"",
+    "play:dev": "pnpm run -C play dev",
+    "play:build": "pnpm run -C play build",
+    "docs:dev": "pnpm run -C docs dev",
+    "docs:build": "pnpm run -C docs build",
+    "docs:serve": "pnpm run -C docs serve"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "cz-git": "^1.9.4"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.26.1",
+    "@types/node": "^22.4.2",
+    "eslint": "^9.9.0",
+    "eslint-plugin-format": "^0.1.2",
+    "lint-staged": "^15.2.9",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged",
+    "commit-msg": "nr lint:commit"
+  },
+  "lint-staged": {
+    "*.{vue,js,ts,jsx,tsx,md,json}": "nr lint:fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  }
+}
