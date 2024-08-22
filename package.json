@@ -27,6 +27,9 @@
     "docs:build": "pnpm run -C docs build",
     "docs:serve": "pnpm run -C docs serve"
   },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
   "dependencies": {
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
